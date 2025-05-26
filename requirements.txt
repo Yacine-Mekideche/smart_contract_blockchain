@@ -1,0 +1,10 @@
+streamlit
+python-dotenv
+openai>=1.0.0
+langchain>=0.0.193
+langchain-community
+langchain-openai
+langchain-openai>=0.0.2
+faiss-cpu
+requests
+fpdf
