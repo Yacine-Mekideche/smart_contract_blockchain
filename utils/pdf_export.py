@@ -3,14 +3,13 @@
 from fpdf import FPDF
 
 def _to_latin1(text: str) -> str:
-    """Filtre les caractères non codables en Latin-1."""
     return text.encode('latin-1', 'ignore').decode('latin-1')
 
 class PDF(FPDF):
     def header(self):
         # Titre en haut de chaque page
         self.set_font("Arial", "B", 14)
-        self.cell(0, 10, _to_latin1("Résumé de l'Analyse de Smart Contract"), ln=True, align="C")
+        self.cell(0, 10, _to_latin1("Summary of Smart Contract Analysis"), ln=True, align="C")
         self.ln(5)
 
     def footer(self):
@@ -47,14 +46,14 @@ def render_pdf(description: str, badges: str, market_data: dict, source_code: st
     # 1. Description complète
     pdf.section(
         1,
-        "Description détaillée du projet",
+        "Detailed description of the project",
         description
     )
 
     # 2. Badges fonctionnels
     pdf.section(
         2,
-        "Badges fonctionnels détectés",
+        "Functional badges detected",
         badges
     )
 
@@ -65,14 +64,14 @@ def render_pdf(description: str, badges: str, market_data: dict, source_code: st
         body = "Aucune donnée marché disponible."
     pdf.section(
         3,
-        "Données marché (CoinGecko)",
+        "Market Data (CoinGecko)",
         body
     )
 
     # 4. Résumé global
     pdf.section(
         4,
-        "Résumé global du contrat",
+        "Overall summary of the contract",
         summary
     )
 
@@ -80,7 +79,7 @@ def render_pdf(description: str, badges: str, market_data: dict, source_code: st
     excerpt = source_code[:1500] + ("\n...\n" if len(source_code) > 1500 else "")
     pdf.section(
         5,
-        "Extrait du code source (tronqué)",
+        "Excerpt from the source code (truncated)",
         excerpt
     )
 

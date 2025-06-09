@@ -17,22 +17,23 @@ def generate_description(source_code: str, token_name: str = None, token_symbol:
     if token_symbol:
         header += f"🔹 Symbole du Token : {token_symbol}\n"
     prompt = (
-        "Tu es un expert blockchain. Voici un contrat Solidity complet.\n"
+        "You are a blockchain expert. Here's the full Solidity contract.\n"
         + header +
-        "Analyse-le et génère une fiche descriptive professionnelle, comme sur CoinMarketCap, avec :\n"
-        "🧠 Description Brève du Projet\n"
-        "🎯 Cas d’Usage / Objectif\n"
-        "🛠️ Caractéristiques Techniques\n"
-        "🧾 Émetteur ou Organisation (adresse déployeur si disponible)\n"
-        "🌍 Réseaux et Chaînes Déployées\n"
-        "📅 Date de Création / Déploiement\n"
-        "📊 Résumé Neutre, clair, sans invention\n"
-        "🔖 Badges fonctionnels (liste markdown)\n"
-        "💼 Risques ou Points de Vigilance\n"
-        "🧮 Tokenomics (si détectables)\n\n"
-        f"Voici le code :\n```solidity\n{truncated}\n```\n"
-        "Réponds en français, de façon concise."
+        "Analyze it and generate a professional summary like on CoinMarketCap, with:\n"
+        "🧠 Brief Project Description\n"
+        "🎯 Use Cases / Purpose\n"
+        "🛠️ Technical Features\n"
+        "🧾 Issuer or Organization (deployer address if available)\n"
+        "🌍 Networks and Deployed Chains\n"
+        "📅 Creation / Deployment Date\n"
+        "📊 Neutral Summary, clear and without hallucinations\n"
+        "🔖 Functional Badges (Markdown list)\n"
+        "💼 Risks or Red Flags\n"
+        "🧮 Tokenomics (if detectable)\n\n"
+        f"Here is the code:\n```solidity\n{truncated}\n```\n"
+        "Reply in English, concisely and professionally."
     )
+
 
     try:
         resp = client.chat.completions.create(

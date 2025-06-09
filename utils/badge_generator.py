@@ -20,5 +20,5 @@ def extract_badges(code: str) -> str:
         badges_list.append("🔁 Upgradable")
 
     if not badges_list:
-        return "Aucun badge spécifique détecté."
+        return "No specific functional badge detected."
     return "\n".join(f"- {b}" for b in badges_list)
